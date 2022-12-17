@@ -1,10 +1,16 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import { useNavigate } from "react-router";
+import AuthContext from "../../store/auth-context";
 import { API_KEY } from "../helper/Helper";
 import "./AuthForm.css";
 
 const AuthForm = () => {
+  const navigate = useNavigate();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+
+  const authCtx = useContext(AuthContext);
+
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsloading] = useState(false);
 
@@ -46,8 +52,8 @@ const AuthForm = () => {
       }
 
       const data = await response.json();
-
-      console.log(data);
+      authCtx.login(data.idToken);
+      navigate("/");
     } catch (error) {
       console.log(error.message);
     }

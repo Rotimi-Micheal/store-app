@@ -1,7 +1,17 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../../store/auth-context";
 import "./Header.css";
 
 const Header = () => {
+  const authCtx = useContext(AuthContext);
+
+  const isLoggedIn = authCtx.isLoggedIn;
+
+  const logoutHandler = () => {
+    authCtx.logout();
+  };
+
   return (
     <header className="header">
       <div className="logo">
@@ -9,21 +19,31 @@ const Header = () => {
       </div>
       <nav>
         <ul>
-          <li>
-            <NavLink to="/welcome">welcome</NavLink>
-          </li>
-          <li>
-            <NavLink to="/blog">Blog</NavLink>
-          </li>
-          <li>
-            <NavLink to="/store">store</NavLink>
-          </li>
-          <li>
-            <NavLink to="/auth">auth</NavLink>
-          </li>
-          <li>
-            <button>Logout</button>
-          </li>
+          {!isLoggedIn && (
+            <li>
+              <NavLink to="/auth">Login</NavLink>
+            </li>
+          )}
+          {isLoggedIn && (
+            <li>
+              <NavLink to="/welcome">welcome</NavLink>
+            </li>
+          )}
+          {isLoggedIn && (
+            <li>
+              <NavLink to="/blog">Blog</NavLink>
+            </li>
+          )}
+          {isLoggedIn && (
+            <li>
+              <NavLink to="/store">store</NavLink>
+            </li>
+          )}
+          {isLoggedIn && (
+            <li>
+              <button onClick={logoutHandler}>Logout</button>
+            </li>
+          )}
         </ul>
       </nav>
     </header>
