@@ -1,42 +1,55 @@
 import { useRef, useState } from "react";
+import { API_KEY } from "../helper/Helper";
 import "./AuthForm.css";
 
 const AuthForm = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const [isLogin, setIsLogin] = useState(true);
+  const [isLoading, setIsloading] = useState(false);
 
   const switchAuthModelHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
+    setIsloading(true);
+
+    let url;
     if (isLogin) {
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`;
     } else {
-      fetch(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCNXZM9Iu_UglJMHddwKflKjG3OSQRYT5s`,
-        {
-          method: "POST",
-          body: JSON.stringify({
-            email: enteredEmail,
-            password: enteredPassword,
-            returnSecureToken: true,
-          }),
-          headers: { "Content-Type": "application/json" },
-        }
-      ).then((res) => {
-        if (res.ok) {
-        } else {
-          return res.json().then((data) => {
-            console.log(data);
-          });
-        }
-      });
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`;
+    }
+
+    const response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        email: enteredEmail,
+        password: enteredPassword,
+        returnSecureToken: true,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    setIsloading(false);
+    try {
+      if (!response.ok) {
+        const data = await response.json();
+        console.log(data);
+        throw new Error(data.error.message || "Authentication Failed");
+      }
+
+      const data = await response.json();
+
+      console.log(data);
+    } catch (error) {
+      console.log(error.message);
     }
   };
 
