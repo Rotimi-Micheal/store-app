@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 0 7%;
+  background-color: #444;
+}
+
+.logo {
+  margin: 0;
+  font-family: "Roboto";
+  font-size: 1.6rem;
+  color: white;
+}
+
+.header ul {
+  display: flex;
+  list-style: none;
+  align-items: baseline;
+  margin: 0;
+  padding: 0;
+}
+
+.header li {
+  margin: 0 1rem;
+}
+
+.header a {
+  text-decoration: none;
+  color: white;
+  font-size: bold;
+}
+
+.header button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: solid 1px white;
+}
