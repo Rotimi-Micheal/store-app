@@ -39,3 +39,11 @@
   cursor: pointer;
   border: solid 1px white;
 }
+
+.header a:hover,
+.header a:active,
+.header a.active {
+  color: #222;
+  padding-bottom: 0.25rem;
+  border-bottom: 4px solid #222;
+}

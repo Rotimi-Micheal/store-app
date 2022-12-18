@@ -52,7 +52,13 @@ const AuthForm = () => {
       }
 
       const data = await response.json();
-      authCtx.login(data.idToken);
+
+      // const expirationTime = new Date(
+      //   new Date().getTime() + +data.expiresIn * 1000
+      // );
+      // expirationTime.toISOString() // goes into the login
+
+      authCtx.login(data.idToken, Date.now() + data.expiresIn * 1000);
       navigate("/");
     } catch (error) {
       console.log(error.message);
@@ -77,7 +83,10 @@ const AuthForm = () => {
           />
         </div>
         <div className="action">
-          <button>{isLogin ? "Login" : "Create Account"}</button>
+          {!isLoading && (
+            <button>{isLogin ? "Login" : "Create Account"}</button>
+          )}
+          {isLoading && <p>Sending Request....</p>}
           <button
             type="button"
             className="toggle"

@@ -21,7 +21,7 @@ function App() {
             <Route path="/" element={<Navigate replace to="/welcome" />} />
           )}
           {!isLoggedIn && (
-            <Route path="/" element={<Navigate replace to="/auth" />} />
+            <Route path="/*" element={<Navigate replace to="/auth" />} />
           )}
           {isLoggedIn && <Route path="/welcome" element={<Welcome />} />}
           {isLoggedIn && <Route path="/blog" element={<Blog />}></Route>}
