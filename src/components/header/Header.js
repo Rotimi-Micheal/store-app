@@ -1,9 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { Icon } from "react-icons-kit";
+import { alignJustify } from "react-icons-kit/feather/alignJustify";
+import { x } from "react-icons-kit/feather/x";
+
 import { NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
 import "./Header.css";
 
 const Header = () => {
+  const [toggle, setToggle] = useState(false);
   const navigate = useNavigate();
   const authCtx = useContext(AuthContext);
 
@@ -14,8 +19,12 @@ const Header = () => {
     navigate("/");
   };
 
+  const toggleHandler = () => {
+    setToggle(!toggle);
+  };
+
   return (
-    <header className="header">
+    <header className={toggle ? "header expanded" : "header"}>
       <div className="logo">
         <h1>LOGO</h1>
       </div>
@@ -34,6 +43,7 @@ const Header = () => {
           {isLoggedIn && (
             <li>
               <NavLink
+                onClick={toggleHandler}
                 className={(navData) => (navData.isActive ? "active" : "")}
                 to="/welcome"
               >
@@ -44,6 +54,7 @@ const Header = () => {
           {isLoggedIn && (
             <li>
               <NavLink
+                onClick={toggleHandler}
                 className={(navData) => (navData.isActive ? "active" : "")}
                 to="/blog"
               >
@@ -54,6 +65,7 @@ const Header = () => {
           {isLoggedIn && (
             <li>
               <NavLink
+                onClick={toggleHandler}
                 className={(navData) => (navData.isActive ? "active" : "")}
                 to="/store"
               >
@@ -62,11 +74,15 @@ const Header = () => {
             </li>
           )}
           {isLoggedIn && (
-            <li>
+            <li onClick={toggleHandler}>
               <button onClick={logoutHandler}>Logout</button>
             </li>
           )}
         </ul>
+        <div className="toggle-icon" onClick={toggleHandler}>
+          {toggle && <Icon icon={x} size={35} />}
+          {!toggle && <Icon icon={alignJustify} size={35} />}
+        </div>
       </nav>
     </header>
   );
