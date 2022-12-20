@@ -1,0 +1,45 @@
+.blogdataUl {
+  list-style: none;
+  padding: 0 1.5rem;
+  width: 100%;
+  padding: 0 1rem;
+  background-color: white;
+}
+
+.blogdataUl li {
+  box-shadow: 0 1px 4px rgba(231, 224, 224, 0.2);
+  width: 100%;
+  background-color: #333;
+  border-radius: 10px;
+}
+
+.blogdataUl li h1 {
+  padding: 10px 20px 0px;
+  font-style: "Roboto";
+  color: white;
+}
+
+.blogdataUl li img {
+  width: 100%;
+  padding: 0 4rem;
+  height: 300px;
+}
+
+.blogdataUl li .text p {
+  font-size: 1rem;
+  font-style: "Roboto";
+  font-weight: 700;
+  line-height: 2rem;
+  font-size: 1.4rem;
+  padding: 10px 20px 0px;
+  color: white;
+}
+
+.blogdataUl button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: solid 1px white;
+  background-color: #333;
+  color: white;
+}

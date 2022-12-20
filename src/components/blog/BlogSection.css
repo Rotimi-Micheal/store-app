@@ -3,17 +3,29 @@
   padding: 0 1.5rem;
   width: 100%;
   padding: 0 1rem;
+  background-color: white;
 }
 
 .blogUl li {
+  box-shadow: 0 1px 4px rgba(231, 224, 224, 0.2);
+  width: 100%;
+  background-color: #333;
+  border-radius: 10px;
+}
+
+.blogUl li a {
+  text-decoration: none;
 }
 
 .blogUl li h1 {
+  padding: 10px 20px 0px;
   font-style: "Roboto";
+  color: white;
 }
 
 .blogUl li img {
   width: 100%;
+  padding: 0 4rem;
   height: 300px;
 }
 
@@ -21,7 +33,10 @@
   font-size: 1rem;
   font-style: "Roboto";
   font-weight: 700;
-  line-height: 1.5rem;
+  line-height: 2rem;
+  font-size: 1.4rem;
+  padding: 10px 20px 0px;
+  color: white;
 }
 
 @media (min-width: 800px) {
@@ -31,20 +46,23 @@
     justify-content: space-between;
   }
   .blogUl li img {
+    padding: 1rem;
     width: 50%;
   }
 
   .blogUl li .text {
-    padding: 0 1rem;
     text-align: left;
 
     width: 50%;
   }
 
   .blogUl li .text p {
-    font-size: 1rem;
+    font-size: 32rem;
     font-style: "Roboto";
     font-weight: 700;
+    line-height: 2rem;
+    font-size: 1.4rem;
+    padding: 10px 20px 0px;
     /* line-height: 1.5rem; */
   }
 }

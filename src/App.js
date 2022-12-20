@@ -7,6 +7,7 @@ import { Fragment, useContext } from "react";
 import Store from "./pages/Store";
 import Auth from "./pages/Auth";
 import AuthContext from "./store/auth-context";
+import FullBlog from "./components/blog/FullBlogPost";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -25,6 +26,8 @@ function App() {
           )}
           {isLoggedIn && <Route path="/welcome" element={<Welcome />} />}
           {isLoggedIn && <Route path="/blog" element={<Blog />}></Route>}
+          {isLoggedIn && <Route path="/blog/:blogId" element={<FullBlog />} />}
+
           {isLoggedIn && <Route path="/store" element={<Store />}></Route>}
           {!isLoggedIn && <Route path="/auth" element={<Auth />}></Route>}
         </Routes>
