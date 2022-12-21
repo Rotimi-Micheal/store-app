@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { Icon } from "react-icons-kit";
+import { shoppingBag } from "react-icons-kit/feather/shoppingBag";
 import { alignJustify } from "react-icons-kit/feather/alignJustify";
 import { x } from "react-icons-kit/feather/x";
 
@@ -25,6 +26,17 @@ const Header = () => {
 
   return (
     <header className={toggle ? "header expanded" : "header"}>
+      {isLoggedIn && !toggle && (
+        <li>
+          <NavLink
+            onClick={toggleHandler}
+            className={(navData) => (navData.isActive ? "active" : "")}
+            to="/store"
+          >
+            <Icon icon={shoppingBag} size={40} />
+          </NavLink>
+        </li>
+      )}
       <div className="logo">
         <h1>LOGO</h1>
       </div>
@@ -73,6 +85,7 @@ const Header = () => {
               </NavLink>
             </li>
           )}
+
           {isLoggedIn && (
             <li onClick={toggleHandler}>
               <button onClick={logoutHandler}>Logout</button>

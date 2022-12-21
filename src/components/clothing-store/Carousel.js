@@ -20,6 +20,8 @@ const ProductCarousel = () => {
           );
         })}
       </Carousel>
+      <a href="#ll">see more</a>
+
       <Carousel showDots={true} responsive={responsive}>
         {SecondproductData.map((item) => {
           return (
@@ -33,6 +35,7 @@ const ProductCarousel = () => {
           );
         })}
       </Carousel>
+      <a href="#ll">see more</a>
     </Fragment>
   );
 };
