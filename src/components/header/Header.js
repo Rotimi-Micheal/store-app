@@ -1,14 +1,14 @@
 import { useContext, useState } from "react";
 import { Icon } from "react-icons-kit";
-import { shoppingBag } from "react-icons-kit/feather/shoppingBag";
 import { alignJustify } from "react-icons-kit/feather/alignJustify";
 import { x } from "react-icons-kit/feather/x";
 
 import { NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
 import "./Header.css";
+import HeaderCartButton from "./HeaderCartButton";
 
-const Header = () => {
+const Header = (props) => {
   const [toggle, setToggle] = useState(false);
   const navigate = useNavigate();
   const authCtx = useContext(AuthContext);
@@ -26,16 +26,11 @@ const Header = () => {
 
   return (
     <header className={toggle ? "header expanded" : "header"}>
-      {isLoggedIn && !toggle && (
-        <li>
-          <NavLink
-            onClick={toggleHandler}
-            className={(navData) => (navData.isActive ? "active" : "")}
-            to="/store"
-          >
-            <Icon icon={shoppingBag} size={40} />
-          </NavLink>
-        </li>
+      {isLoggedIn && (
+        <HeaderCartButton
+          toggleHandler={toggleHandler}
+          onClick={props.onShowCart}
+        />
       )}
       <div className="logo">
         <h1>LOGO</h1>
