@@ -4,7 +4,7 @@ import "react-multi-carousel/lib/styles.css";
 import { productData, responsive, SecondproductData } from "./Data";
 import ProductCard from "./ProductCard";
 
-const ProductCarousel = () => {
+const ProductCarousel = (props) => {
   return (
     <Fragment>
       <Carousel showDots={true} responsive={responsive}>
@@ -12,6 +12,7 @@ const ProductCarousel = () => {
           return (
             <ProductCard
               key={item.id}
+              id={item.id}
               name={item.name}
               imageURL={item.imageURL}
               description={item.description}
@@ -27,6 +28,7 @@ const ProductCarousel = () => {
           return (
             <ProductCard
               key={item.id}
+              id={item.id}
               name={item.name}
               imageURL={item.imageURL}
               description={item.description}

@@ -1,15 +1,10 @@
 import Classes from "./HeaderCartButton.module.css";
 import { Icon } from "react-icons-kit";
 import { shoppingBag } from "react-icons-kit/feather/shoppingBag";
-import { useContext } from "react";
-import CartContext from "../../store/cart-context";
+import { useSelector } from "react-redux";
 
 const HeaderCartButton = (props) => {
-  const CartCtx = useContext(CartContext);
-
-  const numberOfCartItems = CartCtx.items.reduce((curNumber, item) => {
-    return curNumber + item.amount;
-  }, 0);
+  const cartQuantity = useSelector((state) => state.cart.totalQuantity);
 
   return (
     <button className={Classes.button} onClick={props.onClick}>
@@ -17,7 +12,7 @@ const HeaderCartButton = (props) => {
         <Icon icon={shoppingBag} size={35} />
       </span>
       <span>Cart</span>
-      <span className={Classes.badge}>{numberOfCartItems}</span>
+      <span className={Classes.badge}>{cartQuantity}</span>
     </button>
   );
 };

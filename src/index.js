@@ -5,14 +5,18 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import AuthContextProvider from "./store/AuthContxt";
 import CartProvider from "./store/CartProvider";
+import { Provider } from "react-redux";
+import store from "./reduxStore";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <CartProvider>
     <AuthContextProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
     </AuthContextProvider>
   </CartProvider>
 );

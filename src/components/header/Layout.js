@@ -1,21 +1,25 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import Header from "./Header";
 import Cart from "../cart/Cart";
+import { modalActions } from "../../reduxStore/modal-slice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Layout = (Props) => {
-  const [CartIsShown, setCartIsShown] = useState(false);
+  const dispatch = useDispatch();
+  const showCart = useSelector((state) => state.modal.cartIsShown);
+  // const [CartIsShown, setCartIsShown] = useState(false);
 
   const showCartHandler = () => {
-    setCartIsShown(true);
+    dispatch(modalActions.showModal());
   };
 
   const hideCartHandler = () => {
-    setCartIsShown(false);
+    dispatch(modalActions.hideModal());
   };
 
   return (
     <Fragment>
-      {CartIsShown && <Cart onClose={hideCartHandler} />}
+      {showCart && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
       <main>{Props.children}</main>
     </Fragment>
