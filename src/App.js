@@ -8,6 +8,8 @@ import Store from "./pages/Store";
 import Auth from "./pages/Auth";
 import AuthContext from "./store/auth-context";
 import FullBlog from "./components/blog/FullBlogPost";
+import FullStorePage from "./pages/FullStorePage";
+import SecondStorePage from "./pages/SecondStorePage";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -29,6 +31,18 @@ function App() {
           {isLoggedIn && <Route path="/blog/:blogId" element={<FullBlog />} />}
 
           {isLoggedIn && <Route path="/store" element={<Store />}></Route>}
+          {isLoggedIn && (
+            <Route
+              path="/store/full-store1"
+              element={<FullStorePage />}
+            ></Route>
+          )}
+          {isLoggedIn && (
+            <Route
+              path="/store/full-store2"
+              element={<SecondStorePage />}
+            ></Route>
+          )}
           {!isLoggedIn && <Route path="/auth" element={<Auth />}></Route>}
         </Routes>
       </Layout>

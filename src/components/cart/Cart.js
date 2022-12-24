@@ -11,7 +11,6 @@ const Cart = (props) => {
   const total = totalAmount
     .map((item) => item.quantity * item.price)
     .reduce((total, singleItem) => total + singleItem, 0);
-  console.log(total);
 
   return (
     <Modal onClose={props.onClose}>
@@ -19,6 +18,8 @@ const Cart = (props) => {
         {cartItems.map((item) => {
           return (
             <Cartitem
+              key={item.id}
+              id={item.id}
               name={item.name}
               quantity={item.quantity}
               total={item.total}
