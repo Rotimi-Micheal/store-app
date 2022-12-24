@@ -28,7 +28,7 @@ const Cart = (props) => {
           );
         })}
       </ul>
-      ;
+
       <div className={Classes.total}>
         <span>Total Amount</span>
         <span>{`$${total.toFixed(2)}`}</span>
