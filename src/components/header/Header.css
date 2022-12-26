@@ -4,7 +4,7 @@
   justify-content: space-between;
   height: 5rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  padding: 0 7%;
+  /* padding: 0 7%; */
   background-color: #444;
 }
 
@@ -50,6 +50,22 @@
 
 .toggle-icon {
   display: none;
+}
+
+.noshow {
+  display: none;
+}
+.button {
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  background-color: #444;
+  color: white;
+  /* padding: 0.75rem 3rem; */
+  display: flex;
+  align-items: center;
+  border-radius: 25px;
+  font-weight: bold;
 }
 
 @media (max-width: 768px) {
@@ -102,7 +118,7 @@
     color: white;
     position: absolute;
     top: 28px;
-    right: 20px;
+    right: 5px;
   }
 
   .expanded {

@@ -7,8 +7,8 @@ const HeaderCartButton = (props) => {
   const cartQuantity = useSelector((state) => state.cart.totalQuantity);
 
   return (
-    <button className={Classes.button} onClick={props.onClick}>
-      <span className={Classes.icon}>
+    <button className={props.className} onClick={props.onClick}>
+      <span>
         <Icon icon={shoppingBag} size={35} />
       </span>
       <span>Cart</span>

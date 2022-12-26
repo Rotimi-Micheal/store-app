@@ -28,6 +28,7 @@ const Header = (props) => {
     <header className={toggle ? "header expanded" : "header"}>
       {isLoggedIn && (
         <HeaderCartButton
+          className={toggle ? "noshow" : `button`}
           toggleHandler={toggleHandler}
           onClick={props.onShowCart}
         />
